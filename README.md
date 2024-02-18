@@ -1,12 +1,12 @@
 # Assesment Test
 
-**This Product is implemented using.**
+**This Project is implemented using.**
 
 * Android Studio.
 * Kotlin
+* Compose
 
 **Architecture of Project:**
-
 * MVVM with Jetpack Compose.
 
 **Api Calling Libraries**
@@ -26,7 +26,7 @@
 * implementation("androidx.room:room-paging:2.6.1")
 
 **Navigation**
-* RaamCasta Navigation (https://github.com/raamcosta/compose-destinations)
+* Compose Destinations (https://github.com/raamcosta/compose-destinations)
 * implementation("io.github.raamcosta.compose-destinations:core:${raamCastaComposeVersion}")
 * implementation("io.github.raamcosta.compose-destinations:animations-core:${raamCastaComposeVersion}")
 * implementation("io.github.raamcosta.compose-destinations:wear-core:${raamCastaComposeVersion}")
@@ -34,7 +34,7 @@
 
 
 
-** All Libraries: **
+**All Libraries**
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
