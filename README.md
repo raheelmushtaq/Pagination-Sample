@@ -1,13 +1,15 @@
 # Assesment Test
 
 **This Project is implemented using.**
-
 * Android Studio.
 * Kotlin
 * Compose
 
 **Architecture of Project:**
 * MVVM with Jetpack Compose.
+
+**App Screens**
+
 
 **Api Calling Libraries**
 
