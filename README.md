@@ -1,6 +1,6 @@
 # Assesment Test
 
-**This Product is implemented using.**
+**This Project is implemented using.**
 
 * Android Studio.
 * Kotlin
@@ -34,7 +34,7 @@
 
 
 
-** All Libraries: **
+**All Libraries**
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
