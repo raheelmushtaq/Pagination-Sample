@@ -4,9 +4,9 @@
 
 * Android Studio.
 * Kotlin
+* Compose
 
 **Architecture of Project:**
-
 * MVVM with Jetpack Compose.
 
 **Api Calling Libraries**
