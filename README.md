@@ -27,7 +27,6 @@
 
 **Navigation**
 * Compose Destinations (https://github.com/raamcosta/compose-destinations)
-A library over writter above the base boiler plate code of the navigation
 * implementation("io.github.raamcosta.compose-destinations:core:${raamCastaComposeVersion}")
 * implementation("io.github.raamcosta.compose-destinations:animations-core:${raamCastaComposeVersion}")
 * implementation("io.github.raamcosta.compose-destinations:wear-core:${raamCastaComposeVersion}")
