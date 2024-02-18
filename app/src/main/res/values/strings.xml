@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Assessment Test</string>
+    <string name="drop_down_arrow">Drop Down Arrow</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="hide_password">Hide password</string>
+    <string name="show_passwod">Show password</string>
+    <string name="dose">Dose</string>
+    <string name="strength">Strength</string>
+    <string name="name">Name</string>
+    <string name="back">Back</string>
+    <string name="detail">Detail</string>
+    <string name="password_message">Password shoule be atleast 8 characters</string>
+    <string name="no_record_found">No Record Found</string>
+    <string name="no_record_found_message">There are no record avaible for you to see</string>
+</resources>

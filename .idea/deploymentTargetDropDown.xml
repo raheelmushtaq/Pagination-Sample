@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="deploymentTargetDropDown">
+    <value>
+      <entry key="TestRoom">
+        <State />
+      </entry>
+      <entry key="TestRoomDatabase">
+        <State />
+      </entry>
+      <entry key="app">
+        <State />
+      </entry>
+      <entry key="getPagigation()">
+        <State />
+      </entry>
+      <entry key="getRecordById()">
+        <State />
+      </entry>
+      <entry key="validatePassword()">
+        <State />
+      </entry>
+    </value>
+  </component>
+</project>
