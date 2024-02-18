@@ -10,7 +10,15 @@
 
 **App Screens**
 
+<img src="https://github.com/raheelmushtaq/AssessmentTest/blob/main/screens/app_flow.gif" data-canonical-src="https://github.com/raheelmushtaq/AssessmentTest/blob/main/screens/app_flow.gif" width="200" height="400" />
 
+<p float="left">
+<img src="https://github.com/raheelmushtaq/AssessmentTest/blob/main/screens/Screen_1.png" data-canonical-src="https://github.com/raheelmushtaq/AssessmentTest/blob/main/screens/Screen_1.png" width="200" height="400" />
+
+<img src="https://github.com/raheelmushtaq/AssessmentTest/blob/main/screens/Screen_2.png" data-canonical-src="https://github.com/raheelmushtaq/AssessmentTest/blob/main/screens/Screen_1.png" width="200" height="400" />
+
+<img src="https://github.com/raheelmushtaq/AssessmentTest/blob/main/screens/Screen_3.png" data-canonical-src="https://github.com/raheelmushtaq/AssessmentTest/blob/main/screens/Screen_1.png" width="200" height="400" />
+</p>
 **Api Calling Libraries**
 
 * Retrofit.
