@@ -85,6 +85,7 @@ fun LoginComponent(
                 painter = painterResource(id = R.drawable.app_icon),
                 contentDescription = "logo",
                 modifier = Modifier
+                    .padding(vertical = 30.dp)
                     .width(150.dp)
                     .align(Alignment.CenterHorizontally)
                     .height(150.dp)

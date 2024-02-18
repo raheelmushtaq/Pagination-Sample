@@ -117,7 +117,7 @@ fun HomeScreenComponent(
                 }
             } else {
                 Column(
-                    modifier = Modifier.padding(bottom = 30.dp),
+                    modifier = Modifier.padding(bottom = 5.dp),
                 ) {
 
                     LazyColumn(
