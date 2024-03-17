@@ -1,11 +1,10 @@
-package com.app.assesmenttest.ui.screens.home
+package com.app.assesmenttest.ui.presentation.feature_cars
 
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -27,23 +26,22 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.wear.compose.material.CircularProgressIndicator
 import com.app.assesmenttest.R
-import com.app.assesmenttest.room.entity.Medicine
-import com.app.assesmenttest.ui.components.appheader.AppHeader
-import com.app.assesmenttest.ui.components.textfields.LargeText
-import com.app.assesmenttest.ui.components.textfields.MediumText
-import com.app.assesmenttest.ui.components.textfields.RegularText
-import com.app.assesmenttest.ui.components.textfields.SmallText
-import com.app.assesmenttest.ui.screens.destinations.MedicineDetailScreenDestination
-import com.app.assesmenttest.ui.screens.home.component.MedicineListItem
-import com.app.assesmenttest.ui.screens.home.viewmodel.HomeViewModel
+import com.app.assesmenttest.room.entity.Cars
+import com.app.assesmenttest.ui.presentation.destinations.CarsDetailScreenDestination
+import com.app.assesmenttest.ui.presentation.feature_car_detail.CarsDetailScreen
+import com.app.assesmenttest.ui.shared_components.appheader.AppHeader
+import com.app.assesmenttest.ui.shared_components.textfields.LargeText
+import com.app.assesmenttest.ui.shared_components.textfields.MediumText
+import com.app.assesmenttest.ui.presentation.feature_cars.component.CarsListItem
+import com.app.assesmenttest.ui.presentation.feature_cars.viewmodel.CarsViewModel
 import com.app.assesmenttest.utils.addDelay
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
-@Destination()
+@Destination(start = true)
 @Composable
-fun HomeScreen(
-    navigator: DestinationsNavigator, email: String, viewModel: HomeViewModel = hiltViewModel()
+fun CarsScreen(
+    navigator: DestinationsNavigator, viewModel: CarsViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
     val listOfMedicine = viewModel.medicineFlow.collectAsLazyPagingItems()
@@ -67,9 +65,9 @@ fun HomeScreen(
     }
     Column(modifier = Modifier.fillMaxSize()) {
 
-        AppHeader(navHostController = navigator, title = email)
+        AppHeader(navHostController = navigator, title = stringResource(id = R.string.app_name))
         HomeScreenComponent(listOfMedicine, isAppScreenLoading.value) { item ->
-            navigator.navigate(MedicineDetailScreenDestination(item))
+            navigator.navigate(CarsDetailScreenDestination(item))
 
         }
     }
@@ -77,9 +75,9 @@ fun HomeScreen(
 
 @Composable
 fun HomeScreenComponent(
-    listOfMedicine: LazyPagingItems<Medicine>,
+    listOfCars: LazyPagingItems<Cars>,
     isAppLoading: Boolean,
-    onItemClick: (Medicine) -> Unit = {}
+    onItemClick: (Cars) -> Unit = {}
 ) {
     Box(
         modifier = Modifier
@@ -89,14 +87,14 @@ fun HomeScreenComponent(
 
     ) {
 
-        if (listOfMedicine.loadState.refresh is LoadState.Loading) {
+        if (listOfCars.loadState.refresh is LoadState.Loading) {
             CircularProgressIndicator(
                 indicatorColor = Color.Black, modifier = Modifier.align(
                     Alignment.Center
                 )
             )
         } else {
-            if (listOfMedicine.itemCount == 0 && !isAppLoading) {
+            if (listOfCars.itemCount == 0 && !isAppLoading) {
                 Box(
                     modifier = Modifier.align(Alignment.Center)
                 ) {
@@ -124,15 +122,15 @@ fun HomeScreenComponent(
                         verticalArrangement = Arrangement.spacedBy(10.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        items(listOfMedicine.itemCount) { index ->
-                            val item = listOfMedicine[index]
-                            if (item != null) MedicineListItem(item = item) {
+                        items(listOfCars.itemCount) { index ->
+                            val item = listOfCars[index]
+                            if (item != null) CarsListItem(item = item) {
                                 onItemClick(item)
                             }
                         }
 
                         item {
-                            if (listOfMedicine.loadState.append is LoadState.Loading) {
+                            if (listOfCars.loadState.append is LoadState.Loading) {
                                 CircularProgressIndicator(indicatorColor = Color.Black)
                             }
                         }

@@ -1,0 +1,23 @@
+name: Pagination
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  build:
+    runs-on:  ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.0
+
+      - name: Setup Java SDK
+        uses: actions/setup-java@v3.13.0
+
+      - name: Build Gradle
+        uses: ./gradlew build
+
+      - name: Gradle Clean
+        uses: ./gradlew clean
+
+      

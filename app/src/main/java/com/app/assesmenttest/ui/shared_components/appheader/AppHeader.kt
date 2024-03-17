@@ -1,4 +1,4 @@
-package com.app.assesmenttest.ui.components.appheader
+package com.app.assesmenttest.ui.shared_components.appheader
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

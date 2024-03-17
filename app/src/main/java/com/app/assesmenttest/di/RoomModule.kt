@@ -6,10 +6,10 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.room.Room
 import com.app.assesmenttest.remote.ApiClient
-import com.app.assesmenttest.remote.MedicinePagingSourceMediator
-import com.app.assesmenttest.room.MedicineRepository
-import com.app.assesmenttest.room.database.MedicineDataBase
-import com.app.assesmenttest.room.entity.Medicine
+import com.app.assesmenttest.remote.CarsPagingSourceMediator
+import com.app.assesmenttest.room.CarsRepository
+import com.app.assesmenttest.room.database.CarsDataBase
+import com.app.assesmenttest.room.entity.Cars
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,11 +23,11 @@ object RoomModule {
 
     @Provides
     @Singleton
-    fun provideSkillAssessmentsDatabase(@ApplicationContext context: Context): MedicineDataBase {
+    fun provideSkillAssessmentsDatabase(@ApplicationContext context: Context): CarsDataBase {
         return Room.databaseBuilder(
             context,
-            MedicineDataBase::class.java,
-            MedicineDataBase.DATABASE_NAME
+            CarsDataBase::class.java,
+            CarsDataBase.DATABASE_NAME
         )
             .allowMainThreadQueries()
             .build()
@@ -37,14 +37,14 @@ object RoomModule {
     @Provides
     @Singleton
     fun provideMedicinePager(
-        medicineRepository: MedicineRepository,
+        carsRepository: CarsRepository,
         apiClient: ApiClient
-    ): Pager<Int, Medicine> {
+    ): Pager<Int, Cars> {
         return Pager(
             config = PagingConfig(pageSize = 10),
-            remoteMediator = MedicinePagingSourceMediator(medicineRepository, apiClient),
+            remoteMediator = CarsPagingSourceMediator(carsRepository, apiClient),
             pagingSourceFactory = {
-                medicineRepository.getAllMedicine()
+                carsRepository.getAllCars()
             }
         )
     }

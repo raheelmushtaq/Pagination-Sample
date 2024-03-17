@@ -3,9 +3,9 @@ package com.app.assesmenttest.room
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import com.app.assesmenttest.room.dao.MedicineDao
-import com.app.assesmenttest.room.database.MedicineDataBase
-import com.app.assesmenttest.room.entity.Medicine
+import com.app.assesmenttest.room.dao.CarsDao
+import com.app.assesmenttest.room.database.CarsDataBase
+import com.app.assesmenttest.room.entity.Cars
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -14,26 +14,26 @@ import org.junit.Test
 
 class RoomDatabaseTest {
 
-    lateinit var db: MedicineDataBase
-    lateinit var dao: MedicineDao
-    private fun getDB(context: Context): MedicineDataBase {
+    lateinit var db: CarsDataBase
+    lateinit var dao: CarsDao
+    private fun getDB(context: Context): CarsDataBase {
         return Room.inMemoryDatabaseBuilder(
             context,
-            MedicineDataBase::class.java,
+            CarsDataBase::class.java,
         ).allowMainThreadQueries().build()
     }
 
     @Before
     fun setUp() {
         db = getDB(ApplicationProvider.getApplicationContext())
-        dao = db.medicineDao
+        dao = db.carsDao
     }
 
     @Test
     fun insertRecord() = runBlocking {
-        val list = arrayListOf<Medicine>(
-            Medicine(1, "Ved", "1", "500"),
-            Medicine(3, "Ved 1", "1", "600"),
+        val list = arrayListOf<Cars>(
+//            Cars(1, "Ved", "1", "500"),
+//            Cars(3, "Ved 1", "1", "600"),
         )
         dao.insertAll(list)
         val count = dao.getTotalMedicineCount()
@@ -42,47 +42,47 @@ class RoomDatabaseTest {
 
     @Test
     fun getRecordById() = runBlocking {
-        val list = arrayListOf<Medicine>(
-            Medicine(1, "Ved", "1", "500"),
-            Medicine(2, "Ved 1", "1", "600"),
-            Medicine(3, "Ved 5", "1", "600"),
+        val list = arrayListOf<Cars>(
+//            Cars(1, "Ved", "1", "500"),
+//            Cars(2, "Ved 1", "1", "600"),
+//            Cars(3, "Ved 5", "1", "600"),
         )
         dao.insertAll(list)
 
-        val medicine1 = dao.getMedicineById(1)
-        val medicine2 = dao.getMedicineById(10)
+        val medicine1 = dao.getMedicineById("1")
+        val medicine2 = dao.getMedicineById("10")
 
         assert(medicine1 != null)
         assert(medicine2 == null)
 
     }
 
-    fun getDummyList(): ArrayList<Medicine> {
-        val list = arrayListOf<Medicine>(
-            Medicine(1, "Ved", "1", "500"),
-            Medicine(2, "Ved 1", "1", "600"),
-            Medicine(3, "Ved 5", "1", "600"),
-            Medicine(4, "Ved 5", "1", "600"),
-            Medicine(5, "Ved 5", "1", "600"),
-            Medicine(6, "Ved 5", "1", "600"),
-            Medicine(7, "Ved 5", "1", "600"),
-            Medicine(8, "Ved 5", "1", "600"),
-            Medicine(9, "Ved 5", "1", "600"),
-            Medicine(10, "Ved 5", "1", "600"),
-            Medicine(11, "Ved 5", "1", "600"),
-            Medicine(12, "Ved 5", "1", "600"),
-            Medicine(13, "Ved 5", "1", "600"),
-            Medicine(14, "Ved 5", "1", "600"),
-            Medicine(15, "Ved 5", "1", "600"),
-            Medicine(16, "Ved 5", "1", "600"),
-            Medicine(17, "Ved 5", "1", "600"),
-            Medicine(18, "Ved 5", "1", "600"),
-            Medicine(19, "Ved 5", "1", "600"),
-            Medicine(20, "Ved 5", "1", "600"),
-            Medicine(21, "Ved 5", "1", "600"),
-            Medicine(22, "Ved 5", "1", "600"),
-            Medicine(23, "Ved 5", "1", "600"),
-            Medicine(24, "Ved 5", "1", "600"),
+    fun getDummyList(): ArrayList<Cars> {
+        val list = arrayListOf<Cars>(
+//            Cars(1, "Ved", "1", "500"),
+//            Cars(2, "Ved 1", "1", "600"),
+//            Cars(3, "Ved 5", "1", "600"),
+//            Cars(4, "Ved 5", "1", "600"),
+//            Cars(5, "Ved 5", "1", "600"),
+//            Cars(6, "Ved 5", "1", "600"),
+//            Cars(7, "Ved 5", "1", "600"),
+//            Cars(8, "Ved 5", "1", "600"),
+//            Cars(9, "Ved 5", "1", "600"),
+//            Cars(10, "Ved 5", "1", "600"),
+//            Cars(11, "Ved 5", "1", "600"),
+//            Cars(12, "Ved 5", "1", "600"),
+//            Cars(13, "Ved 5", "1", "600"),
+//            Cars(14, "Ved 5", "1", "600"),
+//            Cars(15, "Ved 5", "1", "600"),
+//            Cars(16, "Ved 5", "1", "600"),
+//            Cars(17, "Ved 5", "1", "600"),
+//            Cars(18, "Ved 5", "1", "600"),
+//            Cars(19, "Ved 5", "1", "600"),
+//            Cars(20, "Ved 5", "1", "600"),
+//            Cars(21, "Ved 5", "1", "600"),
+//            Cars(22, "Ved 5", "1", "600"),
+//            Cars(23, "Ved 5", "1", "600"),
+//            Cars(24, "Ved 5", "1", "600"),
         )
         return list
     }

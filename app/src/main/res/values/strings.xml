@@ -14,4 +14,8 @@
     <string name="password_message">Password shoule be atleast 8 characters</string>
     <string name="no_record_found">No Record Found</string>
     <string name="no_record_found_message">There are no record avaible for you to see</string>
+    <string name="make">Make</string>
+    <string name="date">Date</string>
+    <string name="cylinders">Cylinders</string>
+    <string name="fuleType">Fuel Type</string>
 </resources>

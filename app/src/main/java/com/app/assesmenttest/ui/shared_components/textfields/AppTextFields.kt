@@ -1,4 +1,4 @@
-package com.app.assesmenttest.ui.components.textfields
+package com.app.assesmenttest.ui.shared_components.textfields
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable

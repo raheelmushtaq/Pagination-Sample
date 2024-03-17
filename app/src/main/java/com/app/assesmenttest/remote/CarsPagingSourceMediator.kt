@@ -7,25 +7,22 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
-import androidx.room.withTransaction
-import com.app.assesmenttest.room.MedicineRepository
-import com.app.assesmenttest.room.database.MedicineDataBase
-import com.app.assesmenttest.room.entity.Medicine
-import com.app.assesmenttest.ui.screens.home.MedicineRepositoryImp
+import com.app.assesmenttest.room.CarsRepository
+import com.app.assesmenttest.room.entity.Cars
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.IOException
 
 @OptIn(ExperimentalPagingApi::class)
-class MedicinePagingSourceMediator(
-    private val medicineRepository: MedicineRepository, private val apiClient: ApiClient
-) : RemoteMediator<Int, Medicine>() {
+class CarsPagingSourceMediator(
+    private val carsRepository: CarsRepository, private val apiClient: ApiClient
+) : RemoteMediator<Int, Cars>() {
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     override suspend fun load(
-        loadType: LoadType, state: PagingState<Int, Medicine>
+        loadType: LoadType, state: PagingState<Int, Cars>
     ): MediatorResult {
         return try {
-            val count = medicineRepository.getTotalMedicineCount()
+            val count = carsRepository.getTotalCarsCount()
             val page = when (loadType) {
                 LoadType.REFRESH -> 1
                 LoadType.PREPEND -> return MediatorResult.Success(endOfPaginationReached = true)
@@ -38,17 +35,18 @@ class MedicinePagingSourceMediator(
                     }
                 }
             }
+            val carsResponse =
+                apiClient.getCars(state.config.pageSize, state.config.pageSize * (page - 1))
+
+            val isEnd = carsResponse.results.size + count > carsResponse.total_count
+
             withContext(Dispatchers.IO) {
-                if (page == 1) {
-                    val listofMedicine = apiClient.getMedicines()
-
-                    if (loadType == LoadType.REFRESH) {
-                        medicineRepository.clearAll()
-                    }
-                    medicineRepository.insertAll(listofMedicine)
-
+                if (loadType === LoadType.REFRESH) {
+                    carsRepository.clearAll()
                 }
-                MediatorResult.Success(endOfPaginationReached = count / state.config.pageSize >= page)
+                carsRepository.insertAll(carsResponse.results)
+
+                MediatorResult.Success(endOfPaginationReached = isEnd)
             }
         } catch (e: IOException) {
             MediatorResult.Error(e)
